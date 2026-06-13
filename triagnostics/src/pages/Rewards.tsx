@@ -5,7 +5,9 @@ import { rewardItems } from "../data/index";
 export function Rewards() {
   const tokenBalance = useQuizStore((state) => state.tokenBalance);
   const redeemedRewards = useQuizStore((state) => state.redeemedRewards);
+  const appleHealthConnected = useQuizStore((state) => state.connectedServices.appleHealth);
   const redeemReward = useQuizStore((state) => state.redeemReward);
+  const setServiceConnected = useQuizStore((state) => state.setServiceConnected);
 
   const canRedeem = useMemo(
     () => rewardItems.some((item) => !redeemedRewards.includes(item.id) && item.cost <= tokenBalance),
@@ -57,9 +59,24 @@ export function Rewards() {
           })}
         </div>
 
+        <div className="bg-white p-5 rounded-3xl border border-gray-200 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Earn more tokens</h3>
+          <button
+            onClick={() => setServiceConnected("appleHealth")}
+            disabled={appleHealthConnected}
+            className={`w-full rounded-2xl border-2 px-4 py-4 text-sm font-semibold transition-all ${
+              appleHealthConnected
+                ? "border-gray-200 bg-gray-100 text-gray-500 cursor-not-allowed"
+                : "border-teal-600 bg-white text-teal-700 hover:bg-teal-50"
+            }`}
+          >
+            {appleHealthConnected ? "✓ Apple Fitness connected (+20 TOK)" : "Connect Apple Fitness (+20 TOK)"}
+          </button>
+        </div>
+
         {!canRedeem && (
           <div className="rounded-3xl bg-gray-50 p-5 text-sm text-gray-600">
-            Earn more tokens by connecting your health service or finishing the quiz.
+            Complete the bonus quiz to earn more demo tokens.
           </div>
         )}
       </div>
