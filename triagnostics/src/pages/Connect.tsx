@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Wallet } from "lucide-react";
 import { useQuizStore } from "../store/quizStore";
 
 export function Connect() {
@@ -26,7 +27,7 @@ export function Connect() {
           onClick={connectWallet}
           className="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-teal-600 to-pink-600 px-6 py-4 text-white font-semibold hover:shadow-lg transition-all gap-3"
         >
-          <img src="/assets/MetaMask_Fox.svg.png" alt="MetaMask" className="h-6 w-6" />
+          <Wallet size={20} />
           <span>Connect wallet</span>
         </button>
 
