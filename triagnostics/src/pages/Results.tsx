@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useQuizStore } from "../store/quizStore";
 import { profiles } from "../data/profiles";
@@ -14,6 +14,12 @@ const profileIcons: Record<string, any> = {
 export function Results() {
   const navigate = useNavigate();
   const result = useQuizStore((state) => state.result);
+  const assessmentCount = useQuizStore((state) => state.assessmentCount);
+  const starterClaimed = useQuizStore((state) => state.starterClaimed);
+  const simulatedWeek = useQuizStore((state) => state.simulatedWeek);
+  const profileHistory = useQuizStore((state) => state.profileHistory);
+  const claimStarter = useQuizStore((state) => state.claimStarter);
+  const [claiming, setClaiming] = useState(false);
 
   useEffect(() => {
     if (!result) {
@@ -27,10 +33,71 @@ export function Results() {
 
   const profile = profiles[result.profileName];
   const IconComponent = profileIcons[profile.icon];
+  const previous = profileHistory.length > 0 ? profileHistory[profileHistory.length - 1].result : null;
+  const comparisonLabel = previous
+    ? previous.profileName === result.profileName
+      ? "Profile stable, scores improved"
+      : `Previous: ${previous.profileName} · Now: ${result.profileName}`
+    : null;
+
+  const handleClaim = () => {
+    setClaiming(true);
+    window.setTimeout(() => {
+      claimStarter();
+      setClaiming(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-8 px-4">
       <div className="max-w-md mx-auto space-y-6">
+        {assessmentCount >= 2 ? (
+          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <h3 className="font-semibold text-gray-900 mb-2">Progress so far</h3>
+            <p className="text-sm text-gray-600 mb-4">{comparisonLabel}</p>
+            <div className="space-y-3">
+              {Object.entries(result.scores).map(([dimension, score]) => {
+                const previousScore = previous ? previous.scores[dimension as keyof typeof previous.scores] : 0;
+                const diff = score - previousScore;
+                return (
+                  <div key={dimension} className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-gray-700 capitalize">{dimension}</p>
+                      <div className="w-64 bg-gray-100 rounded-full h-2 mt-2">
+                        <div
+                          className="bg-gradient-to-r from-teal-600 to-pink-600 h-2 rounded-full"
+                          style={{ width: `${Math.max(0, (score + 10) / 20) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                    <span className={`text-sm font-semibold ${diff >= 0 ? "text-teal-700" : "text-gray-500"}`}>
+                      {diff >= 0 ? "+" : ""}{diff}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-xs text-gray-500 mt-4">Accuracy improves with each check-in.</p>
+          </div>
+        ) : (
+          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 space-y-4">
+            <h3 className="font-semibold text-gray-900">Your starter plan</h3>
+            <p className="text-sm text-gray-600">A free 7-day routine and a free postbiotic sample to begin.</p>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-700">• Starter routine: Morning fibre, fermented food daily, evening walk</div>
+              <div className="text-sm text-gray-700">• Free postbiotic sample</div>
+            </div>
+            <button
+              onClick={handleClaim}
+              disabled={starterClaimed || claiming}
+              className="w-full px-4 py-3 rounded-2xl bg-teal-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {starterClaimed ? "Claimed" : claiming ? "Claiming..." : "Claim"}
+            </button>
+            <p className="text-xs text-gray-500">Next check-in: week 7 · Current simulated week: {simulatedWeek}</p>
+          </div>
+        )}
+
         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
           <div className="flex justify-center mb-4">
             <div

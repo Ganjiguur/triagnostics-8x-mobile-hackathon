@@ -41,8 +41,8 @@ It does not try to predict a full microbiome. Instead, it infers your profile fr
 1. **Landing** — intro and assessment CTA
 2. **Quiz** — 8-question personal assessment
 3. **Results** — matched profile plus targeted recommendations
-4. **Science** — explanation of how the system works
-5. **Progress** — mock tracking of gut comfort, energy, and bloating
+4. **Progress** — mock tracking of gut comfort, energy, and bloating
+5. **Follow-up** — a second check-in after 7 weeks to refine the profile
 
 ---
 
@@ -97,8 +97,9 @@ This demo is designed to improve with more feedback and eventual clinical valida
 - **Landing** — product intro and fast-start CTA
 - **Quiz** — 8-question adaptive questionnaire
 - **Results** — matched profile with product/food recommendations
-- **Science** — 4-step visual explanation
 - **Progress** — mock chart tracking of digestive comfort, energy, and bloating
+- **Follow-up** — second questionnaire after a 7-week simulated check-in
+- **Demo control** — jump the simulated week to 7 for review
 - **State persistence** — quiz results flow into results and follow-up pages
 - **Responsive UI** — mobile-first design with rounded cards, teal/coral accents
 
@@ -109,8 +110,9 @@ This demo is designed to improve with more feedback and eventual clinical valida
 - `/` — Landing
 - `/quiz` — Assessment
 - `/results` — Profile results
-- `/science` — Scientific explanation
 - `/progress` — Progress dashboard
+- `/followup` — Follow-up questionnaire
+- `/science` — Scientific explanation
 
 ---
 
@@ -172,6 +174,8 @@ Then open `http://localhost:3000`.
 ## Notes
 
 All quiz content and profile recommendations are defined in `src/data/` so the demo can be updated quickly without code changes.
+
+> The "Simulate: jump to week 7" control is a demo-only device. It does not represent a real time-based feature.
 
 ---
 

@@ -1,4 +1,5 @@
 import { questions } from "../data/questions";
+import { followupQuestions } from "../data/followupQuestions";
 
 export interface QuizAnswers {
   [key: number]: string | number;
@@ -27,7 +28,41 @@ function scoreInput(questionId: number, value: string | number) {
   return { energy: 0, digestion: 0, sensitivity: 0, balance: 0 };
 }
 
-export function calculateScores(answers: QuizAnswers): ScoringResult {
+function clamp(value: number) {
+  return Math.max(-5, Math.min(10, value));
+}
+
+function refineScores(scores: ScoringResult["scores"], followUpAnswers: QuizAnswers) {
+  const refined = { ...scores };
+
+  Object.entries(followUpAnswers).forEach(([questionId, answer]) => {
+    const qId = parseInt(questionId, 10);
+    const question = followupQuestions.find((q) => q.id === qId);
+
+    if (!question || question.type !== "choice" || typeof answer !== "number" || !question.options) {
+      return;
+    }
+
+    const option = question.options[answer];
+    if (!option) {
+      return;
+    }
+
+    refined.energy += option.scores.energy;
+    refined.digestion += option.scores.digestion;
+    refined.sensitivity += option.scores.sensitivity;
+    refined.balance += option.scores.balance;
+  });
+
+  return {
+    energy: clamp(refined.energy),
+    digestion: clamp(refined.digestion),
+    sensitivity: clamp(refined.sensitivity),
+    balance: clamp(refined.balance),
+  };
+}
+
+export function calculateScores(answers: QuizAnswers, followUpAnswers?: QuizAnswers): ScoringResult {
   const scores = {
     energy: 0,
     digestion: 0,
@@ -61,6 +96,8 @@ export function calculateScores(answers: QuizAnswers): ScoringResult {
     scores.balance += inputScore.balance;
   });
 
+  const finalScores = followUpAnswers ? refineScores(scores, followUpAnswers) : scores;
+
   const profileMap = {
     energy: "The Processor",
     digestion: "The Balancer",
@@ -68,13 +105,13 @@ export function calculateScores(answers: QuizAnswers): ScoringResult {
     balance: "The Fermenter",
   } as const;
 
-  const bestKey = (Object.keys(scores) as Array<keyof typeof scores>).reduce(
-    (best, key) => (scores[key] > scores[best] ? key : best),
+  const bestKey = (Object.keys(finalScores) as Array<keyof typeof finalScores>).reduce(
+    (best, key) => (finalScores[key] > finalScores[best] ? key : best),
     "digestion"
   );
 
   return {
     profileName: profileMap[bestKey],
-    scores,
+    scores: finalScores,
   };
 }

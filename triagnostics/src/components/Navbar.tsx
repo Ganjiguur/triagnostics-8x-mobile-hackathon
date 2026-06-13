@@ -8,6 +8,7 @@ export function Navbar() {
   const walletConnected = useQuizStore((state) => state.walletConnected);
   const walletAddress = useQuizStore((state) => state.walletAddress);
   const tokenBalance = useQuizStore((state) => state.tokenBalance);
+  const setSimulatedWeek = useQuizStore((state) => state.setSimulatedWeek);
 
   if (!result && !walletConnected) {
     return null;
@@ -89,6 +90,17 @@ export function Navbar() {
             <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-teal-700">
               {tokenBalance} TOK
             </div>
+          </div>
+        )}
+        {result && (
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-500">
+            <span className="font-semibold">Demo control</span>
+            <button
+              onClick={() => setSimulatedWeek(7)}
+              className="rounded-full bg-gray-100 px-3 py-1 text-gray-700"
+            >
+              Simulate: jump to week 7
+            </button>
           </div>
         )}
       </div>

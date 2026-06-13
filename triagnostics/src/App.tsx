@@ -7,6 +7,7 @@ import { Analyzing } from "./pages/Analyzing";
 import { Results } from "./pages/Results";
 import { Science } from "./pages/Science";
 import { Progress } from "./pages/Progress";
+import { Followup } from "./pages/Followup";
 import { Rewards } from "./pages/Rewards";
 import { Premium } from "./pages/Premium";
 import { Bonus } from "./pages/Bonus";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/science" element={<Science />} />
           <Route path="/progress" element={<Progress />} />
+          <Route path="/followup" element={<Followup />} />
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/premium" element={<Premium />} />
           <Route path="/bonus" element={<Bonus />} />

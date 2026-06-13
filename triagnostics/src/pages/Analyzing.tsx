@@ -8,12 +8,16 @@ export function Analyzing() {
   const answers = useQuizStore((state) => state.answers);
   const result = useQuizStore((state) => state.result);
   const setResult = useQuizStore((state) => state.setResult);
+  const setAssessmentCount = useQuizStore((state) => state.setAssessmentCount);
+  const setStartDate = useQuizStore((state) => state.setStartDate);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!result) {
       const calculated = calculateScores(answers);
       setResult(calculated);
+      setAssessmentCount(1);
+      setStartDate(new Date().toISOString());
     }
 
     const timer = window.setTimeout(() => {
@@ -21,7 +25,7 @@ export function Analyzing() {
     }, 1600);
 
     return () => window.clearTimeout(timer);
-  }, [answers, result, setResult]);
+  }, [answers, result, setResult, setAssessmentCount, setStartDate]);
 
   useEffect(() => {
     if (ready) {
