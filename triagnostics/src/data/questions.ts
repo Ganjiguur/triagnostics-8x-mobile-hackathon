@@ -14,6 +14,7 @@ export interface Question {
   question: string;
   type: "choice" | "date" | "text";
   options?: AnswerOption[];
+  suggestions?: string[];
 }
 
 export const questions: Question[] = [
@@ -28,6 +29,23 @@ export const questions: Question[] = [
     category: "About your body",
     question: "Where were you born?",
     type: "text",
+    suggestions: [
+      "United States",
+      "United Kingdom",
+      "Canada",
+      "Australia",
+      "Germany",
+      "France",
+      "Japan",
+      "India",
+      "Brazil",
+      "Mexico",
+      "Spain",
+      "Italy",
+      "South Korea",
+      "Netherlands",
+      "Sweden",
+    ],
   },
   {
     id: 3,
@@ -74,6 +92,23 @@ export const questions: Question[] = [
     category: "Your environment",
     question: "Where do you live now?",
     type: "text",
+    suggestions: [
+      "New York",
+      "Los Angeles",
+      "London",
+      "Toronto",
+      "Sydney",
+      "Berlin",
+      "Paris",
+      "Tokyo",
+      "Mumbai",
+      "São Paulo",
+      "Mexico City",
+      "Barcelona",
+      "Rome",
+      "Seoul",
+      "Amsterdam",
+    ],
   },
   {
     id: 6,

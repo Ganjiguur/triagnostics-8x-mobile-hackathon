@@ -1,5 +1,8 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Question } from "../data/questions";
+import { DatePicker } from "./DatePicker";
+import { SearchableInput } from "./SearchableInput";
+
 
 interface QuizQuestionProps {
   questions: Question[];
@@ -108,13 +111,16 @@ export function QuizQuestion({
           </div>
         ) : (
           <div className="space-y-3">
-            <input
-              type={question.type === "date" ? "date" : "text"}
-              value={inputValue}
-              onChange={(event) => handleInputChange(event.target.value)}
-              className="w-full rounded-2xl border border-gray-200 p-4 text-gray-900 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
-              placeholder={question.type === "date" ? "Select date" : "Type your answer"}
-            />
+            {question.type === "date" ? (
+              <DatePicker value={inputValue} onChange={handleInputChange} />
+            ) : (
+              <SearchableInput
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Type your answer"
+                suggestions={question.suggestions || []}
+              />
+            )}
           </div>
         )}
       </div>
