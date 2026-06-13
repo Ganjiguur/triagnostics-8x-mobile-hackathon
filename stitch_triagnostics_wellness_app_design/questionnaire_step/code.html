@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e0e3e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fff1e8",
+                        "secondary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#7f4a0c",
+                        "on-secondary-fixed": "#400010",
+                        "on-primary-fixed": "#001f25",
+                        "primary": "#00606e",
+                        "surface-tint": "#006878",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#a6eeff",
+                        "tertiary-fixed-dim": "#ffb874",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#7dd3e7",
+                        "surface-bright": "#f7fafb",
+                        "surface-container-high": "#e5e9ea",
+                        "primary-container": "#0b7a8c",
+                        "background": "#f7fafb",
+                        "outline-variant": "#bec8cb",
+                        "on-tertiary-fixed": "#2d1600",
+                        "surface-dim": "#d7dadc",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6a3b00",
+                        "surface-container-low": "#f1f4f5",
+                        "on-background": "#181c1d",
+                        "tertiary-container": "#9c6224",
+                        "surface-variant": "#e0e3e4",
+                        "secondary-fixed": "#ffd9dc",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7fafb",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#def8ff",
+                        "outline": "#6e797c",
+                        "tertiary-fixed": "#ffdcbf",
+                        "primary-fixed-dim": "#7dd3e7",
+                        "secondary": "#b80840",
+                        "inverse-surface": "#2d3132",
+                        "error": "#ba1a1a",
+                        "surface-container": "#ebeef0",
+                        "on-primary-fixed-variant": "#004e5b",
+                        "on-surface": "#181c1d",
+                        "secondary-container": "#db2d56",
+                        "inverse-on-surface": "#eef1f2",
+                        "on-surface-variant": "#3e484b",
+                        "on-secondary-fixed-variant": "#91002f",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "2xl": "16px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Quicksand', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #00606e 0%, #db2d56 100%);
+        }
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, #00606e 0%, #db2d56 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px 0px rgba(33,37,41,0.05);
+        }
+        .active-card {
+            border: 2px solid #00606e;
+            background-color: #f1f4f5;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Shared Component Logic: TopAppBar) -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full top-0 sticky bg-surface-container-lowest z-10">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex-1 px-4">
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<!-- 3/8 Progress = 37.5% -->
+<div class="h-full progress-gradient rounded-full transition-all duration-500" style="width: 37.5%;"></div>
+</div>
+</div>
+<div class="w-10 flex justify-end">
+<span class="font-label-md text-label-md text-on-surface-variant">3/8</span>
+</div>
+</header>
+<main class="flex-1 flex flex-col px-margin-mobile pt-lg pb-xl max-w-md mx-auto w-full">
+<!-- Question Section -->
+<section class="mt-lg mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface leading-tight mb-sm">
+                How often do you experience bloating after meals?
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">
+                This helps us pinpoint dietary triggers in your personalized plan.
+            </p>
+</section>
+<!-- Options Grid (Bento-lite style) -->
+<section class="space-y-md" id="questionnaire-options">
+<!-- Rareley Card -->
+<button class="w-full text-left p-lg rounded-2xl border border-outline-variant bg-white card-shadow transition-all duration-200 active:scale-[0.98] flex items-center group" onclick="selectOption(this)">
+<div class="flex-1">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Rarely</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">circle</span>
+</button>
+<!-- Sometimes Card (Pre-selected as per requirements) -->
+<button class="w-full text-left p-lg rounded-2xl border-2 border-primary bg-surface-container-low card-shadow transition-all duration-200 active:scale-[0.98] flex items-center group active-card" onclick="selectOption(this)">
+<div class="flex-1">
+<span class="font-headline-md text-headline-md text-primary">Sometimes</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Often Card -->
+<button class="w-full text-left p-lg rounded-2xl border border-outline-variant bg-white card-shadow transition-all duration-200 active:scale-[0.98] flex items-center group" onclick="selectOption(this)">
+<div class="flex-1">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Often</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">circle</span>
+</button>
+<!-- Always Card -->
+<button class="w-full text-left p-lg rounded-2xl border border-outline-variant bg-white card-shadow transition-all duration-200 active:scale-[0.98] flex items-center group" onclick="selectOption(this)">
+<div class="flex-1">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Always</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">circle</span>
+</button>
+</section>
+<!-- Contextual Illustration/Hint -->
+<div class="mt-xl p-lg bg-surface-container-low rounded-2xl border border-outline-variant/30 flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+                Bloating can be a sign of slow digestion or specific food sensitivities. Your response helps us calibrate your microbiome test suggestions.
+            </p>
+</div>
+</main>
+<!-- Bottom Action (Transactional/Task Focused - No Nav Bar) -->
+<footer class="p-margin-mobile bg-white/80 backdrop-blur-md sticky bottom-0 border-t border-outline-variant/10">
+<div class="max-w-md mx-auto w-full">
+<button class="w-full primary-gradient-btn h-14 rounded-2xl flex items-center justify-center text-white font-headline-md text-headline-md shadow-lg active:scale-[0.97] transition-transform duration-150">
+                Next
+                <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        function selectOption(element) {
+            const container = document.getElementById('questionnaire-options');
+            const buttons = container.querySelectorAll('button');
+            
+            buttons.forEach(btn => {
+                // Reset state
+                btn.classList.remove('border-2', 'border-primary', 'bg-surface-container-low', 'active-card');
+                btn.classList.add('border', 'border-outline-variant', 'bg-white');
+                
+                const label = btn.querySelector('span.font-headline-md');
+                label.classList.remove('text-primary');
+                label.classList.add('text-on-surface');
+                
+                const icon = btn.querySelector('.material-symbols-outlined');
+                icon.innerText = 'circle';
+                icon.style.fontVariationSettings = "'FILL' 0";
+                icon.classList.remove('text-primary');
+                icon.classList.add('text-outline');
+            });
+
+            // Set active state
+            element.classList.remove('border', 'border-outline-variant', 'bg-white');
+            element.classList.add('border-2', 'border-primary', 'bg-surface-container-low', 'active-card');
+            
+            const activeLabel = element.querySelector('span.font-headline-md');
+            activeLabel.classList.remove('text-on-surface');
+            activeLabel.classList.add('text-primary');
+            
+            const activeIcon = element.querySelector('.material-symbols-outlined');
+            activeIcon.innerText = 'check_circle';
+            activeIcon.style.fontVariationSettings = "'FILL' 1";
+            activeIcon.classList.remove('text-outline');
+            activeIcon.classList.add('text-primary');
+        }
+    </script>
+</body></html>

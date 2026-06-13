@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#fff1e8",
+                    "secondary-fixed-dim": "#ffb2b9",
+                    "tertiary": "#7f4a0c",
+                    "on-secondary-fixed": "#400010",
+                    "on-primary-fixed": "#001f25",
+                    "primary": "#00606e",
+                    "surface-tint": "#006878",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#a6eeff",
+                    "tertiary-fixed-dim": "#ffb874",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#7dd3e7",
+                    "surface-bright": "#f7fafb",
+                    "surface-container-high": "#e5e9ea",
+                    "primary-container": "#0b7a8c",
+                    "background": "#f7fafb",
+                    "outline-variant": "#bec8cb",
+                    "on-tertiary-fixed": "#2d1600",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#6a3b00",
+                    "surface-container-low": "#f1f4f5",
+                    "on-background": "#181c1d",
+                    "tertiary-container": "#9c6224",
+                    "surface-variant": "#e0e3e4",
+                    "secondary-fixed": "#ffd9dc",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f7fafb",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#def8ff",
+                    "outline": "#6e797c",
+                    "tertiary-fixed": "#ffdcbf",
+                    "primary-fixed-dim": "#7dd3e7",
+                    "secondary": "#b80840",
+                    "inverse-surface": "#2d3132",
+                    "error": "#ba1a1a",
+                    "surface-container": "#ebeef0",
+                    "on-primary-fixed-variant": "#004e5b",
+                    "on-surface": "#181c1d",
+                    "secondary-container": "#db2d56",
+                    "inverse-on-surface": "#eef1f2",
+                    "on-surface-variant": "#3e484b",
+                    "on-secondary-fixed-variant": "#91002f",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "margin-mobile": "20px",
+                    "gutter-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Quicksand"],
+                    "label-sm": ["Quicksand"],
+                    "body-lg": ["Quicksand"],
+                    "headline-xl": ["Quicksand"],
+                    "body-md": ["Quicksand"],
+                    "label-md": ["Quicksand"],
+                    "headline-md": ["Quicksand"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Quicksand', sans-serif; }
+        .chart-container { position: relative; height: 100px; width: 100%; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim shadow-[0_4px_20px_0px_rgba(33,37,41,0.05)] w-full top-0 sticky z-50 flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">Your progress</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkqGAslJ0pkamo8uJbGdaVd1Rnpf7bH6uXYWM6hPNmgyD_R8xkSXxHRuiLf1Fy9N68nt7-TLwTaVqj-SqZPLJ_BIuyZE5L8HA8KXyeBypukVc-5ztvVtbS6uab3jjDkhl72uru9RfSZQCn6awHAGo9R7f0YmAZ-Bx7FG6EhSVTQytEVxaq14BP-qleFJplTIxLnsgra6Q_rLr9GB2I3HFDWS1460a2UHVDx-XGeGr2aCvmOB9e142oeCElwYwEIhRQdft2UZH9cng"/>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg flex flex-col gap-lg">
+<!-- Chart Section 1: Digestive Comfort -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_0px_rgba(33,37,41,0.05)] border border-[#F8F9FA] transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Digestive Comfort</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last 8 weeks trend</p>
+</div>
+<div class="flex items-center text-primary-container">
+<span class="material-symbols-outlined text-md" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md ml-xs">+12%</span>
+</div>
+</div>
+<div class="chart-container overflow-hidden">
+<svg class="w-full h-full preserve-3d" preserveaspectratio="none" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="gradientTeal" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00606e" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#00606e" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,75 100,60 T200,50 T300,30 T400,10 V100 H0 Z" fill="url(#gradientTeal)"></path>
+<path d="M0,80 Q50,75 100,60 T200,50 T300,30 T400,10" fill="none" stroke="#00606e" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</section>
+<!-- Chart Section 2: Energy Levels -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_0px_rgba(33,37,41,0.05)] border border-[#F8F9FA] transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Energy Levels</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Consistent improvement recorded</p>
+</div>
+<div class="flex items-center text-primary-container">
+<span class="material-symbols-outlined text-md" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-md text-label-md ml-xs">Stable</span>
+</div>
+</div>
+<div class="chart-container overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,90 C100,85 150,40 250,35 S350,15 400,5 V100 H0 Z" fill="url(#gradientTeal)"></path>
+<path d="M0,90 C100,85 150,40 250,35 S350,15 400,5" fill="none" stroke="#00606e" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</section>
+<!-- Chart Section 3: Bloating Reduction -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_0px_rgba(33,37,41,0.05)] border border-[#F8F9FA] transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Bloating Reduction</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Measured across all meals</p>
+</div>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-md" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md ml-xs">Target Hit</span>
+</div>
+</div>
+<div class="chart-container overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,95 L50,80 L100,85 L150,50 L200,60 L300,20 L400,15 V100 H0 Z" fill="url(#gradientTeal)"></path>
+<path d="M0,95 L50,80 L100,85 L150,50 L200,60 L300,20 L400,15" fill="none" stroke="#00606e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+</section>
+<!-- Stats Section -->
+<div class="mt-base flex flex-col gap-sm">
+<h3 class="font-label-md text-label-md text-on-surface ml-xs">Community Insights</h3>
+<div class="flex flex-wrap gap-sm">
+<div class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md">70% reported improved digestion</span>
+</div>
+<div class="bg-surface-container-high text-primary px-4 py-2 rounded-full flex items-center gap-2 border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="electric_bolt" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="font-label-md text-label-md">Avg. +40% energy increase</span>
+</div>
+<div class="bg-surface-container-low text-on-surface-variant px-4 py-2 rounded-full flex items-center gap-2 border border-[#F1F4F5]">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span class="font-label-md text-label-md">Personalized Plan Efficacy</span>
+</div>
+</div>
+</div>
+<!-- Atmospheric Image -->
+<div class="mt-lg rounded-xl overflow-hidden relative h-48 shadow-lg">
+<img alt="Science meets nature" class="w-full h-full object-cover" data-alt="A clean, minimalist workspace with a glass of water, fresh green plants, and a microscope, bathed in soft morning sunlight. The aesthetic is clinical yet warm, reflecting a science-meets-nature brand identity. The color palette features soft teals, pristine whites, and subtle earth tones, creating a calm and authoritative healthcare environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3gYj4karnswHuBp2h--LB_eInI_wde51vsU88-pariz6CVmvz8GGU6B3irFIIpPxXfdIie37ItiW39DoktK04nG1MfWWTvc0OjStzZtH-QJ_asmCXgAnaApiZAlog56HdKhT4qVmpCsVpjLvELsOlQNfhi02XXwelNp1JZxuKkI_P0tv-rT2OWTKbFOmwwlHq2QppFjHWDroXtjlTBnHq5SCERTz98xEo4nPBboI499W9ICYakYCLKKk9QdOqGvGLrppt5clTCdg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-md">
+<p class="text-white font-body-md text-body-md">Your biological data is evolving. Keep following your daily routine for optimal results.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant shadow-[0_-4px_20px_0px_rgba(33,37,41,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant p-2 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant p-2 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-label-md text-label-md">Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant p-2 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-label-md text-label-md">Plan</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-md text-label-md">Tracker</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for the cards
+        document.querySelectorAll('section').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = "0 8px 30px rgba(33,37,41,0.12)";
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = "0 4px 20px rgba(33,37,41,0.05)";
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TriAgnostics - Your Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e0e3e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fff1e8",
+                        "secondary-fixed-dim": "#ffb2b9",
+                        "tertiary": "#7f4a0c",
+                        "on-secondary-fixed": "#400010",
+                        "on-primary-fixed": "#001f25",
+                        "primary": "#00606e",
+                        "surface-tint": "#006878",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#a6eeff",
+                        "tertiary-fixed-dim": "#ffb874",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#7dd3e7",
+                        "surface-bright": "#f7fafb",
+                        "surface-container-high": "#e5e9ea",
+                        "primary-container": "#0b7a8c",
+                        "background": "#f7fafb",
+                        "outline-variant": "#bec8cb",
+                        "on-tertiary-fixed": "#2d1600",
+                        "surface-dim": "#d7dadc",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6a3b00",
+                        "surface-container-low": "#f1f4f5",
+                        "on-background": "#181c1d",
+                        "tertiary-container": "#9c6224",
+                        "surface-variant": "#e0e3e4",
+                        "secondary-fixed": "#ffd9dc",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7fafb",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#def8ff",
+                        "outline": "#6e797c",
+                        "tertiary-fixed": "#ffdcbf",
+                        "primary-fixed-dim": "#7dd3e7",
+                        "secondary": "#b80840",
+                        "inverse-surface": "#2d3132",
+                        "error": "#ba1a1a",
+                        "surface-container": "#ebeef0",
+                        "on-primary-fixed-variant": "#004e5b",
+                        "on-surface": "#181c1d",
+                        "secondary-container": "#db2d56",
+                        "inverse-on-surface": "#eef1f2",
+                        "on-surface-variant": "#3e484b",
+                        "on-secondary-fixed-variant": "#91002f",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7fafb;
+            font-family: 'Quicksand', sans-serif;
+            color: #181c1d;
+        }
+        .teal-coral-gradient {
+            background: linear-gradient(135deg, #00606e 0%, #b80840 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #00606e 0%, #b80840 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px 0px rgba(33,37,41,0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim shadow-[0_4px_20px_0px_rgba(33,37,41,0.05)] w-full top-0 sticky z-50 flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-base">
+<button class="text-primary dark:text-primary-fixed active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed ml-2">TriAgnostics</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a health-conscious woman with clear skin and bright eyes, set against a soft-focus laboratory background. The lighting is bright and natural, reflecting a modern minimalist aesthetic with cool tones and high-key exposure. Her expression is serene and confident, embodying the 'Science-meets-Nature' philosophy of a premium health brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCnitCyhNzCMFKA8aB2V226GuOBVZgvnyYkSCYSEcvhg_5UTtF46aU9RBh1upDUwKYTxHWhac_vCqjgViY9btlqf4MIBGkAhpqpYcFjxOa6IGwYKDDAZM9myZDMbl4j-dqjzdKcVmhA6_lJx6ezcT5qH-RrfN0nwhksGnGYU3qWfzhfRisrMBtSkeqK0H4jZFerit8KNUMj4LKF3VbXgx5Pbr4PuBn-WxmUAmCoCkDn8zCeZ_rmWM010HrIGp3RC_Rf9bJQgfzHu8"/>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg max-w-md mx-auto">
+<!-- Hero Section: The Balancer -->
+<section class="flex flex-col items-center text-center mb-xl">
+<div class="w-24 h-24 mb-md flex items-center justify-center rounded-full bg-surface-container-low card-shadow">
+<span class="material-symbols-outlined text-[48px] text-gradient" data-icon="balance">balance</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-sm">The Balancer</h2>
+<div class="w-16 h-1 bg-primary rounded-full mb-md mx-auto opacity-20"></div>
+<p class="font-body-md text-body-md text-on-surface-variant px-2 leading-relaxed">
+                Your metabolism thrives on slow-release carbohydrates and probiotic fibers. You maintain steady energy but benefit from targeted digestive support.
+            </p>
+</section>
+<!-- Insights Banner -->
+<div class="bg-primary-container rounded-xl p-md mb-xl flex items-start gap-md card-shadow">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-primary-container">Stability identified: 84%</p>
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-80 mt-1">Your microbiome shows high resilience to plant-based starches.</p>
+</div>
+</div>
+<!-- Section Header -->
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-md text-headline-md text-on-background">Your personalized matches</h3>
+<button class="font-label-md text-label-md text-primary flex items-center gap-xs active:scale-95 transition-transform">
+                View all <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal Scroll Cards -->
+<div class="flex overflow-x-auto gap-md hide-scrollbar pb-md -mx-margin-mobile px-margin-mobile">
+<!-- Card 1: Kefir -->
+<div class="min-w-[200px] bg-surface-container-lowest rounded-xl border border-outline-variant card-shadow flex flex-col p-base">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-sm relative">
+<img alt="Kefir" class="w-full h-full object-cover" data-alt="A clean, minimalist close-up of a glass bottle of fresh kefir, with creamy white liquid and soft natural lighting. The background is a bright, clinical yet warm kitchen setting with light wood accents. The image follows a high-key, modern aesthetic, emphasizing purity, wellness, and scientific clarity with a focus on healthy probiotics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTXjbhlrG7aLZbq7DiAoY-CwaSoJIvyTZJ-gMzBgF1hlKpMlA4eKySNuqmdxlz8gV5jCYwP607LTpfz7z8ToTteqcSNPkS57JVTvN2CkNHO4DUeqUBu7FY0xmeqVyd4TFChPbQTvjZUjULk6DSjl_fTJbwbiji2ksCvgOOf-7wvc2wRkNAmj1OrVxI1kEG9kiiYltE61LtamtaHv_bpPaA4D37Bms6kf9KK39gdSorYF6dTq2wUEenG1tiMjRL-7BEW_LkbsYEZM"/>
+<div class="absolute top-2 right-2 bg-surface-container-lowest/90 rounded-full p-1">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="science">science</span>
+</div>
+</div>
+<div class="px-sm pb-sm">
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Kefir</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Rich in diverse probiotics</p>
+</div>
+</div>
+<!-- Card 2: Oat Bran -->
+<div class="min-w-[200px] bg-surface-container-lowest rounded-xl border border-outline-variant card-shadow flex flex-col p-base">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-sm relative">
+<img alt="Oat Bran" class="w-full h-full object-cover" data-alt="A macro photograph of raw oat bran in a minimalist ceramic bowl. The lighting is soft and side-lit to emphasize the texture of the grain. The color palette is composed of warm neutrals and soft whites, maintaining a clean, high-end wellness feel. The composition is centered and balanced, reflecting a science-meets-nature aesthetic for nutritional stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAENteIu7SV0u0-25L3tgiJuxKJoqBpFNrP4sF1OhwvZDElhpEong-84_OfDYryy7nt5FU2Fy6Jl3ZlK0M0nAAaIldIL6ULyPUZEB-guTy-huKswCxJk09hyLUzMwNqjmcXY0rG42_W5DrCEwPXZ_kyW9kR5sr7ZvHNtg1qMsQfxY5D6F71EgzF1uDNQM5GZWd7KpwNOWiBwRUQcEKzi4-U30pP4mZbH_gyFV7Cs2DLzMBdJRcLtPHmnbVsR3fygZ4d1QCa4iHWB-s"/>
+<div class="absolute top-2 right-2 bg-surface-container-lowest/90 rounded-full p-1">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="energy_savings_leaf">energy_savings_leaf</span>
+</div>
+</div>
+<div class="px-sm pb-sm">
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Oat Bran</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Prebiotic fiber for stability</p>
+</div>
+</div>
+<!-- Card 3: Jerusalem Artichoke -->
+<div class="min-w-[200px] bg-surface-container-lowest rounded-xl border border-outline-variant card-shadow flex flex-col p-base">
+<div class="w-full h-32 rounded-lg overflow-hidden mb-sm relative">
+<img alt="Jerusalem Artichoke" class="w-full h-full object-cover" data-alt="Artistic studio shot of Jerusalem artichokes on a clean white surface with sharp, artistic shadows. The lighting is professional and emphasizes the organic shapes of the tubers. The image aesthetic is minimalist and scientific, focusing on the raw ingredient as a source of inulin. The background is a pristine, clinical white, suggesting a laboratory-grade focus on nature-derived nutrition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqHv9KTR4ncNpJMnr3XeLFXOSNvmDv7Szg6K2VwtWKbAsGdq17NIu3eHm--DKfwCEWfj-p8ZXjWTFo8H2EMgFNemba9GgIvGBmtpTL-TW8aSiSVyav8kNNgYVnlH5slSjbiYeAiao9oHnFSHmcf2tUDpNGqA7Qw3-FDZn9BpXFH4KVM07xlTGfB2EIHwd8eGt3aDhTpwT1CeWvQtfWheZCE78sBfooUgVLeseL3VoLT6SRTb2Y1RpiyswE0uP3IbLTd0IMnV2KEOI"/>
+<div class="absolute top-2 right-2 bg-surface-container-lowest/90 rounded-full p-1">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="microbiology">microbiology</span>
+</div>
+</div>
+<div class="px-sm pb-sm">
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Jerusalem Artichoke</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Inulin-rich gut fuel</p>
+</div>
+</div>
+</div>
+<!-- Action Section -->
+<div class="mt-lg flex flex-col items-center">
+<button class="group flex items-center gap-xs font-label-md text-label-md text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+                See the science behind this
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="mt-base font-label-sm text-label-sm text-on-surface-variant opacity-60">Based on your recent biome sequencing</p>
+</div>
+<!-- Bento Secondary Insight Card -->
+<div class="mt-xl grid grid-cols-2 gap-md">
+<div class="col-span-2 bg-surface-container-lowest p-md rounded-xl border border-outline-variant card-shadow flex items-center justify-between">
+<div>
+<h5 class="font-label-md text-label-md text-on-background">Activity Recommendation</h5>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Low-intensity rhythmic breathing</p>
+</div>
+<span class="material-symbols-outlined text-gradient text-xl" data-icon="self_improvement">self_improvement</span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant shadow-[0_-4px_20px_0px_rgba(33,37,41,0.05)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="science" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="font-label-md text-label-md mt-1 font-bold">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-label-md text-label-md mt-1">Plan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-md text-label-md mt-1">Tracker</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for horizontal scroll snap or effects
+        const scrollContainer = document.querySelector('.hide-scrollbar');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body></html>
