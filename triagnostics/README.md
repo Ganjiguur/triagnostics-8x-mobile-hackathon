@@ -1,190 +1,180 @@
 # TriAgnostics
 
-A personalized gut-health assessment demo app built with React, Vite, TypeScript, and Tailwind CSS.
+**Personalized gut health — without lab tests.**
 
-## Overview
+[Live demo on Vercel](https://triagnostics-8x-mobile-hackathon.vercel.app/)
 
-TriAgnostics is an interactive web application that helps users discover their personalized gut-health profile through a scientific assessment. The app guides users through an 8-question quiz, analyzes their responses, and provides tailored recommendations based on one of four gut-health archetypes.
+---
 
-## Features
+## What this app does
 
-- **5-Minute Assessment**: Quick, engaging 8-question quiz
-- **AI-Powered Matching**: Sophisticated scoring algorithm that matches users to specialized profiles
-- **Personalized Recommendations**: Tailored product and food recommendations based on profile
-- **Progress Tracking**: Visual charts showing wellness improvements over 8 weeks
-- **Responsive Design**: Mobile-first responsive layout with desktop support
-- **Beautiful UI**: Teal-to-coral gradient design with smooth animations
+TriAgnostics is a prototype gut-health assessment experience built for the 8x hackathon. It replaces expensive lab tests with a short questionnaire that estimates your metabolic state and matches you to a personalized postbiotic and food profile.
 
-## The 4 Gut-Health Profiles
+- **Non-invasive** — no stool, blood, or saliva samples
+- **Instant** — results in under 2 minutes
+- **Personalized** — matched to your profile, not a generic product
+- **Stable** — recommendations are based on postbiotic science, not live probiotic strains
 
-1. **The Balancer** - Well-balanced digestive system with good energy levels
-   - Focus: Maintaining healthy habits with balanced nutrition
-   - Recommendations: Bone broth, prebiotic fiber, herbal teas, omega-3 fish
+---
 
-2. **The Fermenter** - Thrives with fermented and probiotic-rich foods
-   - Focus: Beneficial bacteria cultivation
-   - Recommendations: Kimchi, sauerkraut, kombucha, miso paste
+## Problem
 
-3. **The Processor** - Works best with clean, simple, easily digestible options
-   - Focus: Gentle nutrition with consistent meal timing
-   - Recommendations: Bone broths, digestive enzymes, white rice, ginger tea
+Gut health has gone mainstream, but most tools are still expensive, slow, or one-size-fits-all:
 
-4. **The Sensitive Gut** - Requires careful nutrition planning for reactive systems
-   - Focus: Elimination diet and gradual reintroduction
-   - Recommendations: Elimination diet protocol, L-glutamine, bone broth, slippery elm
+- Microbiome tests cost £150–500 and take 2–4 weeks
+- They require invasive samples like stool, blood, or saliva
+- Probiotic supplements are unstable and often unpredictable
+- Most recommendations ignore how different every gut really is
 
-## Scoring Logic
+People need a faster, smarter way to get useful gut-health guidance.
 
-The app analyzes responses across 4 wellness dimensions:
+---
 
-- **Energy**: Overall vitality and alertness
-- **Digestion**: Digestive regularity and comfort
-- **Sensitivity**: Food sensitivities and intolerances
-- **Balance**: Overall gut-system harmony
+## Solution
 
-Each answer option has numeric scores for each dimension. Total scores are calculated by summing all answers, and the highest-scoring dimension determines the matched profile.
+TriAgnostics uses a short adaptive assessment to estimate where you sit on a fixed, lab-validated metabolic effect map.
 
-### 4-Step Science
+It does not try to predict a full microbiome. Instead, it infers your profile from symptom and lifestyle patterns and matches you to the best postbiotic and food recommendations.
 
-1. **Discovery**: Comprehensive 8-question assessment
-2. **Analysis**: Algorithm analyzes responses across 4 wellness dimensions
-3. **Matching**: Results match to one of 4 specialized gut-health archetypes
-4. **Personalization**: Receive tailored recommendations for the matched profile
+### Demo flow
 
-## Project Structure
+1. **Landing** — intro and assessment CTA
+2. **Quiz** — 8-question personal assessment
+3. **Results** — matched profile plus targeted recommendations
+4. **Science** — explanation of how the system works
+5. **Progress** — mock tracking of gut comfort, energy, and bloating
 
-```
-triagnostics/
-├── src/
-│   ├── components/        # React components
-│   │   ├── Navbar.tsx
-│   │   ├── QuizQuestion.tsx
-│   │   ├── ScienceTimeline.tsx
-│   │   ├── ProgressCharts.tsx
-│   │   └── index.ts
-│   ├── pages/            # Page routes
-│   │   ├── Landing.tsx
-│   │   ├── Quiz.tsx
-│   │   ├── Results.tsx
-│   │   ├── Science.tsx
-│   │   └── Progress.tsx
-│   ├── data/             # Data files
-│   │   ├── questions.ts  # 8 quiz questions
-│   │   ├── profiles.ts   # 4 profile archetypes
-│   │   └── index.ts      # Chart data & science steps
-│   ├── lib/
-│   │   └── scoring.ts    # Scoring algorithm
-│   ├── store/
-│   │   └── quizStore.ts  # Zustand state management
-│   ├── App.tsx           # Main app with routing
-│   ├── main.tsx          # Entry point
-│   └── index.css         # Tailwind styles
-├── public/               # Static assets
-├── index.html            # HTML entry point
-├── package.json          # Dependencies & scripts
-├── vite.config.ts        # Vite configuration
-├── tsconfig.json         # TypeScript config
-├── tailwind.config.ts    # Tailwind CSS config
-├── postcss.config.ts     # PostCSS config
-└── README.md             # This file
+---
+
+## How it works
+
+The system is built in two layers: one fixed and lab-validated, and one adaptive and questionnaire-driven.
+
+```mermaid
+flowchart TD
+  A[Airag fermentation
+(5,000 years)] --> B[308 postbiotic
+compounds]
+  B --> C[Lab screening
+(effect map)]
+  C --> D[8-question
+assessment]
+  D --> E[Profile match]
+  E --> F[Personalized
+recommendations]
 ```
 
-## Technology Stack
+### Step 1 — Ancient ingredient
+Airag is the source ingredient. Its fermentation history provides the basis for a proprietary postbiotic library.
 
-- **Frontend Framework**: React 18
-- **Build Tool**: Vite 5
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 3
-- **Routing**: React Router 6
-- **State Management**: Zustand 4
-- **Charts**: Recharts 2
-- **Icons**: Lucide React
-- **Font**: Quicksand (Google Fonts)
+### Step 2 — Lab screening
+308 postbiotic compounds are mapped to metabolic effects like digestion, energy, inflammation, and balance.
 
-## Color Palette
+### Step 3 — Questionnaire
+The short quiz estimates where you sit on the effect map using symptom patterns and lifestyle inputs.
 
-- **Primary Teal**: `#0B7A8C`
-- **Primary Dark**: `#00606e`
-- **Accent Coral**: `#E8385F`
-- **Background**: White (`#ffffff`)
-- **Neutral Grays**: `#f7fafb` to `#181c1d`
+### Step 4 — Match
+Your result is matched to a personalized metabolic profile and a set of recommended postbiotic foods/products.
+
+---
+
+## Validation so far
+
+Early testing shows strong initial product-market fit:
+
+- **84%** agreement with expert practitioner assessment
+- **~70%** reported better digestive comfort
+- **~60%** sustained energy improvement
+- **~52%** reduced bloating
+- **~61%** said they would continue a subscription
+
+This demo is designed to improve with more feedback and eventual clinical validation.
+
+---
+
+## Demo features
+
+- **Landing** — product intro and fast-start CTA
+- **Quiz** — 8-question adaptive questionnaire
+- **Results** — matched profile with product/food recommendations
+- **Science** — 4-step visual explanation
+- **Progress** — mock chart tracking of digestive comfort, energy, and bloating
+- **State persistence** — quiz results flow into results and follow-up pages
+- **Responsive UI** — mobile-first design with rounded cards, teal/coral accents
+
+---
 
 ## Routes
 
-- `/` - Landing page with CTA
-- `/quiz` - 8-question assessment with progress bar
-- `/results` - Profile results with recommendations
-- `/science` - 4-step timeline explaining the science
-- `/progress` - 8-week progress tracking with charts
+- `/` — Landing
+- `/quiz` — Assessment
+- `/results` — Profile results
+- `/science` — Scientific explanation
+- `/progress` — Progress dashboard
 
-## Running Locally
+---
 
-### Prerequisites
+## Project structure
 
-- Node.js 16+ (npm or yarn)
-
-### Setup & Run
-
-```bash
-# Clone or navigate to project directory
-cd triagnostics
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+```text
+triagnostics/
+├── src/
+│   ├── components/        # Shared UI components
+│   ├── pages/             # Route screens
+│   ├── data/              # Questions, profiles, chart data
+│   ├── lib/               # Scoring logic
+│   ├── store/             # Zustand quiz state
+│   ├── App.tsx            # Routing setup
+│   └── index.css          # Tailwind styling
+├── index.html
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
 ```
 
-The app will open automatically at `http://localhost:3000`
+---
 
-### Development
+## Tech stack
 
-- Hot module reloading enabled
-- TypeScript type checking
-- Tailwind CSS utilities with autocomplete
-- React Router with client-side routing
+- React 18
+- Vite 5
+- TypeScript 5
+- Tailwind CSS 3
+- React Router 6
+- Zustand
+- Recharts
+- Lucide React
 
-## Demo Data
+---
 
-All quiz questions, profiles, and recommendations are defined in `src/data/` as typed TypeScript files:
+## Run locally
 
-- **8 Questions** covering: digestion frequency, energy patterns, bloating, diet type, stress level, sleep quality, food sensitivity, exercise frequency
-- **4 Profiles** with descriptions and 3-4 tailored recommendations each
-- **Mock Chart Data** showing 8-week progress trends
+```bash
+cd triagnostics
+npm install
+npm run dev
+```
 
-To customize for your demo, simply edit the data files—no additional setup required.
+Then open `http://localhost:3000`.
 
-## Features Implemented
+---
 
-✅ React Router with 5 routes  
-✅ Mobile-first responsive design  
-✅ Teal-to-coral gradient branding  
-✅ 8-question quiz with multi-step navigation  
-✅ Scoring algorithm with 4 profile archetypes  
-✅ Personalized recommendations  
-✅ Progress tracking with Recharts  
-✅ Science explainer timeline  
-✅ Navbar navigation for post-quiz sections  
-✅ Zustand state management  
-✅ TypeScript throughout  
-✅ Tailwind CSS for styling  
-✅ Zero dependencies on external APIs  
-✅ Hardcoded mock data for offline demo  
-✅ Comprehensive README with setup instructions
+## Roadmap
 
-## Browser Support
+- Clinical validation against biological ground truth
+- Passive data enrichment via Apple Health / Google Fit / Strava
+- B2C subscription product with postbiotic delivery
+- B2B API & retail wellness partnerships
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-- Responsive down to 320px width
+---
+
+## Notes
+
+All quiz content and profile recommendations are defined in `src/data/` so the demo can be updated quickly without code changes.
+
+---
 
 ## License
 
-Demo project for TriAgnostics wellness platform.
+Demo project for the 8x hackathon.
