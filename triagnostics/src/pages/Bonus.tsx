@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuizStore } from "../store/quizStore";
 import { bonusQuestions } from "../data/index";
