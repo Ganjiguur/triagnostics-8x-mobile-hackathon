@@ -10,14 +10,136 @@ export interface AnswerOption {
 
 export interface Question {
   id: number;
+  category: string;
   question: string;
-  options: AnswerOption[];
+  type: "choice" | "date" | "text";
+  options?: AnswerOption[];
 }
 
 export const questions: Question[] = [
   {
     id: 1,
+    category: "About your body",
+    question: "When were you born?",
+    type: "date",
+  },
+  {
+    id: 2,
+    category: "About your body",
+    question: "Where were you born?",
+    type: "text",
+  },
+  {
+    id: 3,
+    category: "About your body",
+    question: "Biological sex",
+    type: "choice",
+    options: [
+      {
+        text: "Female",
+        scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Male",
+        scores: { energy: 1, digestion: 0, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Prefer not to say",
+        scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 },
+      },
+    ],
+  },
+  {
+    id: 4,
+    category: "About your body",
+    question: "How would you describe your build?",
+    type: "choice",
+    options: [
+      {
+        text: "Slim",
+        scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Average",
+        scores: { energy: 0, digestion: 1, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Broad",
+        scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 },
+      },
+    ],
+  },
+  {
+    id: 5,
+    category: "Your environment",
+    question: "Where do you live now?",
+    type: "text",
+  },
+  {
+    id: 6,
+    category: "Your environment",
+    question: "Climate where you live",
+    type: "choice",
+    options: [
+      {
+        text: "Cold",
+        scores: { energy: 0, digestion: 1, sensitivity: 0, balance: 0 },
+      },
+      {
+        text: "Temperate",
+        scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Hot",
+        scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 },
+      },
+    ],
+  },
+  {
+    id: 7,
+    category: "Your environment",
+    question: "How processed is your typical diet?",
+    type: "choice",
+    options: [
+      {
+        text: "Mostly fresh",
+        scores: { energy: 2, digestion: 2, sensitivity: 0, balance: 2 },
+      },
+      {
+        text: "Mixed",
+        scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
+      },
+      {
+        text: "Mostly packaged",
+        scores: { energy: -1, digestion: -1, sensitivity: 2, balance: -1 },
+      },
+    ],
+  },
+  {
+    id: 8,
+    category: "Your environment",
+    question: "How often do you eat fermented foods?",
+    type: "choice",
+    options: [
+      {
+        text: "Often",
+        scores: { energy: 1, digestion: 2, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Sometimes",
+        scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
+      },
+      {
+        text: "Never",
+        scores: { energy: -1, digestion: -1, sensitivity: 1, balance: -1 },
+      },
+    ],
+  },
+  {
+    id: 9,
+    category: "Your habits",
     question: "How often do you have regular bowel movements?",
+    type: "choice",
     options: [
       {
         text: "1-2 times daily",
@@ -28,32 +150,16 @@ export const questions: Question[] = [
         scores: { energy: 1, digestion: 0, sensitivity: 1, balance: 1 },
       },
       {
-        text: "Irregular/unpredictable",
+        text: "Irregular",
         scores: { energy: 0, digestion: -1, sensitivity: 2, balance: 0 },
       },
     ],
   },
   {
-    id: 2,
-    question: "What's your typical energy level during the day?",
-    options: [
-      {
-        text: "Consistently high",
-        scores: { energy: 3, digestion: 1, sensitivity: 0, balance: 2 },
-      },
-      {
-        text: "Moderate with dips",
-        scores: { energy: 1, digestion: 0, sensitivity: 1, balance: 1 },
-      },
-      {
-        text: "Low/fatigued",
-        scores: { energy: -1, digestion: -1, sensitivity: 1, balance: -1 },
-      },
-    ],
-  },
-  {
-    id: 3,
+    id: 10,
+    category: "Your habits",
     question: "Do you experience bloating or gas?",
+    type: "choice",
     options: [
       {
         text: "Rarely",
@@ -74,104 +180,82 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: 4,
-    question: "What best describes your diet?",
+    id: 11,
+    category: "Your habits",
+    question: "Energy through the day",
+    type: "choice",
     options: [
       {
-        text: "Whole foods, balanced",
-        scores: { energy: 2, digestion: 2, sensitivity: 0, balance: 3 },
+        text: "Steady",
+        scores: { energy: 2, digestion: 1, sensitivity: 0, balance: 2 },
       },
       {
-        text: "Mixed with some processed",
+        text: "Afternoon dip",
         scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
       },
       {
-        text: "High in fermented foods",
-        scores: { energy: 1, digestion: 1, sensitivity: -1, balance: 2 },
-      },
-      {
-        text: "Processed/fast foods",
-        scores: { energy: -1, digestion: -1, sensitivity: 2, balance: -2 },
+        text: "Often tired",
+        scores: { energy: -2, digestion: -1, sensitivity: 1, balance: -1 },
       },
     ],
   },
   {
-    id: 5,
-    question: "How would you rate your stress levels?",
+    id: 12,
+    category: "Your habits",
+    question: "Sleep quality",
+    type: "choice",
     options: [
       {
-        text: "Low/well-managed",
-        scores: { energy: 2, digestion: 1, sensitivity: 0, balance: 2 },
+        text: "Good",
+        scores: { energy: 2, digestion: 1, sensitivity: 0, balance: 1 },
+      },
+      {
+        text: "Average",
+        scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
+      },
+      {
+        text: "Poor",
+        scores: { energy: -2, digestion: -1, sensitivity: 1, balance: -1 },
+      },
+    ],
+  },
+  {
+    id: 13,
+    category: "Your habits",
+    question: "Stress level",
+    type: "choice",
+    options: [
+      {
+        text: "Low",
+        scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 },
       },
       {
         text: "Moderate",
         scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
       },
       {
-        text: "High/frequently stressed",
+        text: "High",
         scores: { energy: -1, digestion: -1, sensitivity: 2, balance: -1 },
       },
     ],
   },
   {
-    id: 6,
-    question: "How's your sleep quality?",
+    id: 14,
+    category: "Your habits",
+    question: "Exercise frequency",
+    type: "choice",
     options: [
       {
-        text: "7-9 hours, restful",
-        scores: { energy: 3, digestion: 1, sensitivity: 0, balance: 2 },
+        text: "4+ times a week",
+        scores: { energy: 2, digestion: 1, sensitivity: 0, balance: 1 },
       },
       {
-        text: "6-7 hours, okay",
-        scores: { energy: 1, digestion: 0, sensitivity: 1, balance: 1 },
+        text: "1-3 times a week",
+        scores: { energy: 1, digestion: 0, sensitivity: 0, balance: 1 },
       },
       {
-        text: "Less than 6 hours",
-        scores: { energy: -2, digestion: -1, sensitivity: 1, balance: -1 },
-      },
-    ],
-  },
-  {
-    id: 7,
-    question: "Do you notice food sensitivities or intolerances?",
-    options: [
-      {
-        text: "None that I'm aware of",
-        scores: { energy: 2, digestion: 2, sensitivity: -2, balance: 2 },
-      },
-      {
-        text: "Mild (occasional discomfort)",
-        scores: { energy: 0, digestion: 0, sensitivity: 1, balance: 0 },
-      },
-      {
-        text: "Moderate (affects diet)",
-        scores: { energy: -1, digestion: -1, sensitivity: 2, balance: -1 },
-      },
-      {
-        text: "Severe (many restrictions)",
-        scores: { energy: -2, digestion: -2, sensitivity: 3, balance: -2 },
-      },
-    ],
-  },
-  {
-    id: 8,
-    question: "How often do you exercise?",
-    options: [
-      {
-        text: "4+ times per week",
-        scores: { energy: 3, digestion: 1, sensitivity: 0, balance: 2 },
-      },
-      {
-        text: "2-3 times per week",
-        scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 },
-      },
-      {
-        text: "Once a week",
-        scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 },
-      },
-      {
-        text: "Rarely/never",
-        scores: { energy: -2, digestion: -1, sensitivity: 1, balance: -2 },
+        text: "Rarely",
+        scores: { energy: -1, digestion: -1, sensitivity: 1, balance: -1 },
       },
     ],
   },

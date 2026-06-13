@@ -14,107 +14,44 @@ export interface Profile {
 export const profiles: Record<string, Profile> = {
   "The Balancer": {
     name: "The Balancer",
-    description:
-      "You have a well-balanced digestive system with good energy levels and minimal sensitivities. Your gut thrives on consistent routines and balanced nutrition. Focus on maintaining your current healthy habits.",
+    description: "A steady system with balanced digestion and energy.",
     recommendations: [
-      {
-        name: "Bone Broth",
-        benefit:
-          "Supports gut lining health and maintains digestive balance.",
-      },
-      {
-        name: "Prebiotic Fiber",
-        benefit:
-          "Nurtures beneficial gut bacteria without disruption.",
-      },
-      {
-        name: "Herbal Teas",
-        benefit: "Promotes relaxation and digestive ease.",
-      },
-      {
-        name: "Omega-3 Fish",
-        benefit: "Reduces inflammation and supports overall wellness.",
-      },
+      { name: "Bone Broth", benefit: "Supports gut lining health." },
+      { name: "Prebiotic Fiber", benefit: "Feeds good bacteria." },
+      { name: "Herbal Teas", benefit: "Eases digestion." },
     ],
     icon: "Heart",
     color: "#0B7A8C",
   },
   "The Fermenter": {
     name: "The Fermenter",
-    description:
-      "Your system loves fermented and probiotic-rich foods. You thrive with beneficial bacteria and benefit from gut-nourishing foods. Embrace fermentation as your digestive ally.",
+    description: "A digestive profile that thrives on fermented foods.",
     recommendations: [
-      {
-        name: "Kimchi & Sauerkraut",
-        benefit: "Boosts beneficial gut bacteria naturally.",
-      },
-      {
-        name: "Kombucha",
-        benefit: "Supports digestive enzymes and detoxification.",
-      },
-      {
-        name: "Probiotic Yogurt",
-        benefit:
-          "Adds live cultures for optimal digestion.",
-      },
-      {
-        name: "Miso Paste",
-        benefit: "Enhances nutrient absorption and immunity.",
-      },
+      { name: "Kimchi", benefit: "Adds live cultures." },
+      { name: "Kombucha", benefit: "Supports digestion." },
+      { name: "Miso", benefit: "Improves nutrient uptake." },
     ],
     icon: "Beaker",
     color: "#E8385F",
   },
   "The Processor": {
     name: "The Processor",
-    description:
-      "Your digestive system works best with clean, simple foods. You need easily digestible options and consistent meal timing. Focus on gentle, whole-food nutrition.",
+    description: "A system that responds best to simple, clean nutrition.",
     recommendations: [
-      {
-        name: "Bone Broths",
-        benefit: "Easily digestible and deeply nourishing.",
-      },
-      {
-        name: "Digestive Enzymes",
-        benefit:
-          "Supports optimal breakdown and absorption.",
-      },
-      {
-        name: "White Rice",
-        benefit: "Gentle carb that's easy on the system.",
-      },
-      {
-        name: "Ginger Tea",
-        benefit: "Soothes digestion and reduces discomfort.",
-      },
+      { name: "Bone Broth", benefit: "Gentle on digestion." },
+      { name: "Digestive Enzymes", benefit: "Aids nutrient breakdown." },
+      { name: "Ginger Tea", benefit: "Soothe discomfort." },
     ],
     icon: "Zap",
     color: "#F59E0B",
   },
   "The Sensitive Gut": {
     name: "The Sensitive Gut",
-    description:
-      "Your system is reactive to many foods and needs careful nutrition planning. Focus on elimination, low-FODMAP options, and gradual reintroduction of foods. Healing is possible with patience.",
+    description: "A reactive system that needs careful support.",
     recommendations: [
-      {
-        name: "Elimination Diet",
-        benefit:
-          "Identifies trigger foods safely and systematically.",
-      },
-      {
-        name: "L-Glutamine",
-        benefit:
-          "Supports gut lining repair and barrier function.",
-      },
-      {
-        name: "Bone Broth",
-        benefit: "Soothes and heals the digestive tract.",
-      },
-      {
-        name: "Slippery Elm",
-        benefit:
-          "Coats and protects the intestinal lining.",
-      },
+      { name: "Elimination Diet", benefit: "Identifies triggers." },
+      { name: "L-Glutamine", benefit: "Supports repair." },
+      { name: "Slippery Elm", benefit: "Coats the gut lining." },
     ],
     icon: "AlertCircle",
     color: "#EC4899",

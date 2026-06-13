@@ -1,3 +1,5 @@
+import { Question } from "./questions";
+
 export interface ChartDataPoint {
   week: number;
   value: number;
@@ -42,26 +44,115 @@ export const bloatingFrequencyData: ChartDataPoint[] = [
 export const scienceSteps = [
   {
     title: "Discovery",
-    description:
-      "Your profile starts with our comprehensive 8-question assessment.",
+    description: "One short questionnaire.",
     icon: "Search",
   },
   {
     title: "Analysis",
-    description:
-      "Our algorithm analyzes your responses across 4 wellness dimensions.",
+    description: "Match responses to a postbiotic effect map.",
     icon: "BarChart3",
   },
   {
-    title: "Matching",
-    description:
-      "Your results match to one of 4 specialized gut-health archetypes.",
+    title: "Prediction",
+    description: "Estimate your metabolic fingerprint.",
     icon: "Zap",
   },
   {
-    title: "Personalization",
-    description:
-      "Receive tailored recommendations designed just for your profile.",
+    title: "Recommendation",
+    description: "Show the best profile and choices.",
     icon: "Target",
+  },
+];
+
+export const bonusQuestions: Question[] = [
+  {
+    id: 101,
+    category: "Bonus questions",
+    question: "Do you eat leafy greens regularly?",
+    type: "choice",
+    options: [
+      { text: "Yes", scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 } },
+      { text: "Sometimes", scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 } },
+      { text: "Rarely", scores: { energy: -1, digestion: -1, sensitivity: 0, balance: -1 } },
+    ],
+  },
+  {
+    id: 102,
+    category: "Bonus questions",
+    question: "Do you drink at least 2 liters of water a day?",
+    type: "choice",
+    options: [
+      { text: "Yes", scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 } },
+      { text: "Sometimes", scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 } },
+      { text: "No", scores: { energy: -1, digestion: -1, sensitivity: 0, balance: -1 } },
+    ],
+  },
+  {
+    id: 103,
+    category: "Bonus questions",
+    question: "Do you eat a source of fibre every day?",
+    type: "choice",
+    options: [
+      { text: "Yes", scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 } },
+      { text: "Sometimes", scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 } },
+      { text: "No", scores: { energy: -1, digestion: -1, sensitivity: 0, balance: -1 } },
+    ],
+  },
+  {
+    id: 104,
+    category: "Bonus questions",
+    question: "Do you feel rested when you wake up?",
+    type: "choice",
+    options: [
+      { text: "Yes", scores: { energy: 2, digestion: 0, sensitivity: 0, balance: 1 } },
+      { text: "Some days", scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 } },
+      { text: "No", scores: { energy: -2, digestion: -1, sensitivity: 0, balance: -1 } },
+    ],
+  },
+  {
+    id: 105,
+    category: "Bonus questions",
+    question: "Do you include fermented foods in most meals?",
+    type: "choice",
+    options: [
+      { text: "Yes", scores: { energy: 1, digestion: 1, sensitivity: 0, balance: 1 } },
+      { text: "Sometimes", scores: { energy: 0, digestion: 0, sensitivity: 0, balance: 0 } },
+      { text: "No", scores: { energy: -1, digestion: -1, sensitivity: 0, balance: -1 } },
+    ],
+  },
+];
+
+export interface RewardItem {
+  id: number;
+  name: string;
+  cost: number;
+  description: string;
+}
+
+export const rewardItems: RewardItem[] = [
+  { id: 1, name: "Postbiotic blend", cost: 30, description: "Sample pack for gut support." },
+  { id: 2, name: "Fibre supplement", cost: 25, description: "Daily fibre to support digestion." },
+  { id: 3, name: "Starter pack", cost: 50, description: "Core set for early use." },
+];
+
+export interface PremiumPlan {
+  id: number;
+  title: string;
+  price: string;
+  features: string[];
+}
+
+export const premiumPlans: PremiumPlan[] = [
+  {
+    id: 1,
+    title: "Free",
+    price: "£0",
+    features: ["Assessment", "Profile result", "Basic recommendations"],
+  },
+  {
+    id: 2,
+    title: "Plus",
+    price: "£6/month",
+    features: ["Reassessment tracking", "Bonus token rate", "Detailed reports"],
   },
 ];
